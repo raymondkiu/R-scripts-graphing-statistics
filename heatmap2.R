@@ -1,36 +1,38 @@
 #Author: Raymond Kiu Raymond.Kiu@quadram.ac.uk
 
 #########################################################
-### Loading required packages and setting working directory
+# Loading required packages and setting working directory
 #########################################################
 library(gplots)
 library(RColorBrewer)
 
-setwd("set working directory")    #set working directory
+setwd("working directory")    #set working directory
 
 #########################################################
-### reading in data and transform it to matrix format
+# reading in data and transform it to matrix format
 #########################################################
 
 data <- read.csv("combined.binary.insertion.csv")
-head(read.csv)
+head(data) #checking if data is OK
 rnames <- data[,1]                            # assign labels in column 1 to "rnames"
 mat_data <- data.matrix(data[,2:ncol(data)])  # transform column 2-5 into a matrix
 rownames(mat_data) <- rnames                  # assign row names
 
 #########################################################
-### customizing and plotting heatmap
+# customizing and plotting heatmap
 #########################################################
 
 # creates a own color palette from red to green
-my_palette <- colorRampPalette(c("white","white", "plum2"))(n = 299)
+my_palette <- colorRampPalette(c("white","white", "plum2"))(n = 299) 
+# refer to http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf for colour name (different from HTML code)
 # (optional) defines the color breaks manually for a "skewed"color transition
-col_breaks = c(seq(0,0.1,length=100),  # for blue
-               seq(0.2,0.3,length=100),           # for yellow
-               seq(0.4,1.0,length=100))             # for red
+col_breaks = c(seq(0,0.1,length=100),             # color 1
+               seq(0.2,0.3,length=100),           # color 2
+               seq(0.4,1.0,length=100))           # color 3
 
-# creates a 5 x 5 inch image - if you want to save the picture directly into a new file which you cannot visualise in the R studio
-png("IS.all.test.png",
+# creates an image - if you want to save the picture directly into a new file which you cannot visualise in the R studio
+# adjust resolution and width and height accordingly- test for best combination
+png("test.png",
   width = 5*300,        # 5 x 300 pixels
   height = 60*300,
   res = 300,            # 300 pixels per inch
@@ -71,6 +73,7 @@ heatmap.2(mat_data,
           #Colv = as.dendrogram(col_cluster) # apply default clustering method
           #RowSideColors=as.character(as.numeric(dat$GO)
 )
+
 ########################
 ####To print legend
 ########################
