@@ -1,5 +1,17 @@
 # Author: Raymond Kiu Raymond.Kiu@quadram.ac.uk
 
+#####################################################################
+# To install and load required packages and setting working directory
+#####################################################################
+#if (!require("gplots")) {
+#   install.packages("gplots", dependencies = TRUE)
+#   library(gplots)
+#   }
+#if (!require("RColorBrewer")) {
+#   install.packages("RColorBrewer", dependencies = TRUE)
+#   library(RColorBrewer)
+#   }
+
 #########################################################
 # Loading required packages and setting working directory
 #########################################################
