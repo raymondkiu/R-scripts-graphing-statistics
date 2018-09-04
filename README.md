@@ -6,3 +6,7 @@ My R scripts for plotting including:
 2. Area plot
 3. Heatmap
 4. Bar plots for 16S metagenomics
+
+
+R scripts for program:
+1. Hierbaps: phylogenetic clustering method
