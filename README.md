@@ -8,7 +8,7 @@ This is my R scripts repository for publication-ready analysis and plotting incl
 4. Bar plots for 16S metagenomics
 5. World map
 6. Rarefraction curve for diversity analysis <br>
-![alt text](https://github.com/raymondkiu/R_scripts/blob/master/rarecurve.png)
+![alt text](https://github.com/raymondkiu/R_scripts/blob/master/graphs/rarecurve.png)
 
 
 
