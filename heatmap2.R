@@ -93,6 +93,11 @@ heatmap.2(mat_data,
           #RowSideColors=as.character(as.numeric(dat$GO)
 )
 
+# To extract ordered row names for the clustering use below and write a csv
+# sorted <- mat_data [match(rev(labels(hh$rowDendrogram)), rownames(mat_data)), ]
+# head(sorted)
+# write.csv(sorted,"sorted.csv")
+
 ########################
 ####To print legend
 ########################
