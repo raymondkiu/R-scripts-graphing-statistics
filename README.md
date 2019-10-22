@@ -19,3 +19,5 @@ This is my R scripts repository for publication-ready analysis and plotting incl
 R scripts for program:
 1. Hierbaps: phylogenetic clustering method
 2. Diversity index: Inverse Simpson, Fisher Alpha and Shannon-Weaver
+3. Sleuth (RNAseq)
+4. DESeq 2
