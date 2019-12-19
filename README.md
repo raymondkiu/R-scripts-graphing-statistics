@@ -4,7 +4,7 @@ This is my R scripts repository for publication-ready analysis and plotting incl
 
 1. PCA
 2. Area plot
-3. Dotplot
+3. Dotplot <br>
 ![alt text](https://github.com/raymondkiu/R_scripts/blob/master/graphs/dotplot.png)
 4. Heatmap
 5. Bar plots for 16S metagenomics
