@@ -19,6 +19,7 @@ This is my R scripts repository for publication-ready analysis and plotting incl
 ![alt text](https://github.com/raymondkiu/R_scripts/blob/master/graphs/Diffexpr-maplot.png)
 
 10. Column plot using Geom_bar <br>
+![alt text](https://github.com/raymondkiu/R_scripts/blob/master/graphs/Col-MF3.png)
 
 R scripts for program:
 1. Hierbaps: phylogenetic clustering method
