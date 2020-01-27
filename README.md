@@ -21,6 +21,9 @@ This is my R scripts repository for publication-ready analysis and plotting incl
 10. Column plot using Geom_bar <br>
 ![alt text](https://github.com/raymondkiu/R_scripts/blob/master/graphs/Col-MF3.png)
 
+11. Faceted bar plot
+![alt text](https://github.com/raymondkiu/R_scripts/blob/master/graphs/bar-key-genes.png)
+
 R scripts for program:
 1. Hierbaps: phylogenetic clustering method
 2. Diversity index: Inverse Simpson, Fisher Alpha and Shannon-Weaver
