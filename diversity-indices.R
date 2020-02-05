@@ -42,3 +42,23 @@ write.csv(Z, file="diversity-index.csv"). # write into csv
 #C1	2.065260335	0.932623078
 #C2	2.373586835	1.088605054
 #C3	1.98979124	0.95799131
+
+# Plot diversity index - no stats
+ggplot(data=data, aes(x=Group, y=shannon,color=Group)) + geom_boxplot() + theme_bw() + theme(axis.text.y=element_text(colour="black",size=12), axis.text=element_text(size=12))
+ggplot(data=data, aes(x=Group, y=invsimp,color=Group)) + geom_boxplot() + theme_bw() + theme(axis.text.y=element_text(colour="black",size=12), axis.text=element_text(size=12))    
+
+# Use these packages for plot with stats - p values
+install.packages("ggpubr")
+library(ggpubr)
+
+compare_means(Shannon ~ Group, data=data, method ="wilcox.test")
+compare_means(Invsimpson ~ Group, data=data, method ="wilcox.test")
+
+# Plot with P value calculated using normal student t test (not paired sample)
+ggboxplot(data,x="Group", y="shannon", color="Group") + stat_compare_means(aes(), method="t.test")
+ggboxplot(data,x="Group", y="invsimp", color="Group") + stat_compare_means(aes(), method="t.test")
+
+# Save plot
+ggsave("shannon.png", plot = last_plot(), device = NULL, path = NULL,
+       scale = 1, width = 10, height = 15, units = c("cm"),
+       dpi =1200, limitsize = TRUE)
