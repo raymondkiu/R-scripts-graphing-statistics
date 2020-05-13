@@ -1,6 +1,6 @@
 # R_plots
 
-This is my R scripts repository for publication-ready analysis and plotting including:
+This is my R scripts archive for publication-ready analysis and plotting including:
 
 1. PCA
 2. Area plot
