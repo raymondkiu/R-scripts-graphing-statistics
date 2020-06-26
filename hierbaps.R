@@ -26,7 +26,8 @@ setwd("U:/")
 snp.matrix <- load_fasta("coregene_snp.fa")
 
 # Predict clustering (main run)
-hb.results <- hierBAPS(snp.matrix, max.depth = 2, n.pops = 20, quiet = TRUE)
+hb.results <- hierBAPS(snp.matrix, max.depth = 2, n.pops = 20, quiet = TRUE, n.cores = 4)
+# n.cores only available in Linux R not in R studio
 
 # Look into your data, first column should be your isolate names
 head(hb.results$partition.df)
