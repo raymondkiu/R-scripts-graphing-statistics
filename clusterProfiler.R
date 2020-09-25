@@ -32,6 +32,7 @@ library(forcats)
 all_reactome <- data.frame()
 all_kegg <- data.frame()
 all_go <- data.frame()
+all_mkegg <- data.frame()
 
 setwd("~/Sleuth/")
 # Read tab delimited file as input: header: Ensembl, A list of EnsemblID gene in the same column
@@ -60,8 +61,11 @@ all_reactome <- rbind(all_reactome, genes_reactome2)
 ##################
 
 # Run gene mapping, ont can be MF, BP, CC or ALL for three
-genes_go <- enrichGO(gene=input_e$ENTREZID, OrgDb="org.Mm.eg.db",ont= "BP", pvalueCutoff=0.05,pool = FALSE)
+genes_go <- enrichGO(gene=input_e$ENTREZID, OrgDb="org.Mm.eg.db",ont= "BP", pvalueCutoff=0.05)
 genes_go
+
+# Drop GO level=3 (maybe worthwhile doing this)
+# dropped_go <- dropGO(genes_go, level=3)
 #Get GO results
 genes_go2 <- as.data.frame(genes_go)
 all_go <- rbind(all_go, genes_go2)
@@ -73,7 +77,7 @@ all_go
 ##################
 
 #KEGG pathway enrichment
-genes_kegg <- enrichKEGG(gene=input_e$ENTREZID ,organism = 'mouse',pvalueCutoff = 0.05)
+genes_kegg <- enrichKEGG(gene=input_e$ENTREZID ,organism = "mmu",pvalueCutoff = 0.05)
 #Get KEGG results
 genes_kegg2 <- as.data.frame(genes_kegg)
 genes_kegg2
@@ -81,6 +85,7 @@ genes_kegg2
 #Append reactome results to previous results
 all_kegg <- rbind(all_kegg, genes_kegg2)
 all_kegg
+
 
 #### Plotting: for example reactome top 10 ####
 # Get top 10 list by p adjust
@@ -98,8 +103,13 @@ ggplot(all_reactome_top10, aes(x = GeneRatio, y = fct_reorder(Description, GeneR
   ylab(NULL)
 
 #### Plotting: for example GO top 15 ####
-# Change labels and get top 10 by p adjust
-all_go_top15 <- all_go %>% top_n(-15, p.adjust)
+# Change labels and get top 10 by p adjust - change the x in top_n(-x, p.adjust) for top x terms
+# it is -x because we want the least p.adjust so technically it is ranking from the bottom.
+all_go
+all_go_top15 <- top_n(all_go, -15, p.adjust)
+# all_go_top15 <- top_n(all_go, 20, Count) # Top 20 by gene count
+# all_go_top15 <- all_go %>% top_n(-20, p.adjust) # This works as well. Can compare
+
 # Convert gene ratio to decimal
 all_go_top15$GeneRatio <- sapply(all_go_top15$GeneRatio, function(x) eval(parse(text=x)))
 all_go_top15
@@ -112,7 +122,7 @@ ggplot(all_go_top15, aes(x = GeneRatio, y = fct_reorder(Description, GeneRatio))
   ylab(NULL)
 
 #### Plotting: for example KEGG top 10 ####
-# Change labels and get top 10 by p adjust
+# Change labels and get top 15 by p adjust
 all_kegg_top15 <- all_kegg %>% top_n(-15, p.adjust)
 # Convert gene ratio to decimal
 all_kegg_top15$GeneRatio <- sapply(all_top15$GeneRatio, function(x) eval(parse(text=x)))
