@@ -23,7 +23,7 @@ set.seed(1234) # To enable reproduction of the same result
 setwd("U:/")
     
 # Load FASTA file  
-snp.matrix <- load_fasta("coregene_snp.fa")
+snp.matrix <- load_fasta("coregene_snp.fa",keep.singletons = TRUE)
 
 # Predict clustering (main run)
 hb.results <- hierBAPS(snp.matrix, max.depth = 2, n.pops = 20, quiet = TRUE, n.cores = 4)
